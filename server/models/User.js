@@ -21,6 +21,11 @@ const userSchema = new mongoose.Schema(
       required: true,
       select: false,       // queries leave this field out unless we ask for it explicitly
     },
+    notificationPreferences: {
+      spendingAlerts: { type: Boolean, default: true },
+      savingsAlerts: { type: Boolean, default: true },
+      summaryAlerts: { type: Boolean, default: true },
+    },
   },
   {
     timestamps: true,      // adds createdAt and updatedAt automatically
