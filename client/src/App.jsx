@@ -120,10 +120,10 @@ function AuthScreen({ onSuccess, loading, setLoading, status, setStatus }) {
       const response = await api.post(endpoint, payload);
       onSuccess(response);
     } catch (error) {
-      if (!error.response) {
-        setStatus('Cannot connect to backend server. Make sure "npm run dev" is running in the server terminal on port 5000.');
+      if (!error.response || error.response.status >= 500) {
+        setStatus('Cannot connect to backend server. Make sure "npm run dev" is running in your server terminal on port 5000.');
       } else {
-        setStatus(error.response.data?.message || 'Authentication failed. Please check your credentials.');
+        setStatus(error.response.data?.message || 'Authentication failed. Please check your email and password.');
       }
     } finally {
       setLoading(false);
