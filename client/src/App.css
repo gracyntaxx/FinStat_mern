@@ -170,6 +170,47 @@ textarea:focus-visible {
   gap: 16px;
 }
 
+.demo-credentials-box {
+  margin-top: 20px;
+  padding: 14px 16px;
+  border-radius: 6px;
+  background: var(--purple-soft);
+  border: 1px solid rgba(58, 16, 229, 0.2);
+  font-size: 0.85rem;
+}
+
+.demo-credentials-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.demo-credentials-header strong {
+  color: var(--navy);
+  font-size: 0.88rem;
+}
+
+.demo-credentials-box p {
+  margin: 0 0 8px;
+  color: var(--navy-muted);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.demo-credentials-box code {
+  display: block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--purple);
+  background: #ffffff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid rgba(58, 16, 229, 0.15);
+  word-break: break-all;
+}
+
 .auth-form label,
 .card-form label,
 .settings-card label,

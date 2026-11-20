@@ -120,7 +120,11 @@ function AuthScreen({ onSuccess, loading, setLoading, status, setStatus }) {
       const response = await api.post(endpoint, payload);
       onSuccess(response);
     } catch (error) {
-      setStatus(error.response?.data?.message || 'Authentication failed.');
+      if (!error.response) {
+        setStatus('Cannot connect to backend server. Make sure "npm run dev" is running in the server terminal on port 5000.');
+      } else {
+        setStatus(error.response.data?.message || 'Authentication failed. Please check your credentials.');
+      }
     } finally {
       setLoading(false);
     }
@@ -164,6 +168,26 @@ function AuthScreen({ onSuccess, loading, setLoading, status, setStatus }) {
             {loading ? 'Please wait...' : mode === 'login' ? 'Login' : 'Create account'}
           </button>
         </form>
+
+        {mode === 'login' && (
+          <div className="demo-credentials-box">
+            <div className="demo-credentials-header">
+              <strong>🎯 Explore with Test User Data</strong>
+              <button
+                type="button"
+                className="link-btn"
+                onClick={() => {
+                  setForm({ fullName: '', email: 'testuser@example.com', password: 'password123' });
+                  setStatus('');
+                }}
+              >
+                Auto-fill
+              </button>
+            </div>
+            <p>Pre-populated with 30-day transactions, savings pots, and income records.</p>
+            <code>testuser@example.com / password123</code>
+          </div>
+        )}
       </div>
     </div>
   );
